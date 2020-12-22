@@ -1,4 +1,12 @@
 {% extends 'task/base.html' %}
 {% block content %}
     <h1>welcome to todo app homepage</h1>
+    <ul>
+    {% for task in tasks %}
+        <li>{{ task }}</li>
+    {% empty %}
+        <p>No Tasks</p>
+    {% endfor %}
+    </ul>
+
 {% endblock %}
