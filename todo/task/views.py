@@ -25,3 +25,16 @@ class TaskListView(ListView):
         context['form'] = TaskForm()
         return context
 
+
+def update_task(request, pk):
+    task = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+
+    context = {'form': form}
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+        return redirect('taskList')
+    return render(request, 'task/update_task.html', context)
+
