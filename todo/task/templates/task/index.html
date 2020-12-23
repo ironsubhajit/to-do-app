@@ -9,10 +9,14 @@
     <ul>
     {% for task in tasks %}
         <li>
-            {{ task }}
-            <a href="{% url 'update_task' task.id %}">Update</a>
-            <a href="{% url 'delete_task' task.id %}">Delete</a>
+            {% if task.complete == True %}
+                <strike>{{ task }}</strike>
+            {% else %}
+                <span>{{ task }}</span>
+            {% endif %}
         </li>
+        <a href="{% url 'update_task' task.id %}">Update</a>
+        <a href="{% url 'delete_task' task.id %}">Delete</a>
 
     {% empty %}
         <p>No Tasks</p>
