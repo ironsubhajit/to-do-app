@@ -1,41 +1,43 @@
 {% extends 'task/base.html' %}
 {% block content %}
-    <h1>welcome to todo app homepage</h1>
-    <form method='POST'>
-        {% csrf_token %}
-        {{ form.title }}
-        <input type="submit" value="Add Task">
-    </form>
-    <ul>
-    {% for task in tasks %}
-        <li>
-            {% if task.complete == True %}
-                <strike>{{ task }}</strike>
-            {% else %}
-                <span>{{ task }}</span>
-            {% endif %}
-        </li>
-        <a href="{% url 'update_task' task.id %}">Update</a>
-        <a href="{% url 'delete_task' task.id %}">Delete</a>
+    <div class="container">
+        <h1>welcome to todo app homepage</h1>
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form.title }}
+            <input type="submit" value="Add Task">
+        </form>
+        <ul>
+        {% for task in tasks %}
+            <li>
+                {% if task.complete == True %}
+                    <strike>{{ task }}</strike>
+                {% else %}
+                    <span>{{ task }}</span>
+                {% endif %}
+            </li>
+            <a href="{% url 'update_task' task.id %}">Update</a>
+            <a href="{% url 'delete_task' task.id %}">Delete</a>
 
-    {% empty %}
-        <p>No Tasks</p>
-    {% endfor %}
-    </ul>
-    <div class="pagination">
-        <span class="page-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        {% empty %}
+            <p>No Tasks</p>
+        {% endfor %}
+        </ul>
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
             </span>
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
+        </div>
     </div>
 {% endblock %}
