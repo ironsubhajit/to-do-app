@@ -10,9 +10,9 @@
     {% for task in tasks %}
     <li>
       {% if task.complete == True %}
-      <strike>{{ task }}</strike>
+        <h5 class="display-4"><del>{{ task }}</del></h5>
       {% else %}
-      <span>{{ task }}</span>
+        <span><h5 class="display-4">{{ task }}</h5></span>
       {% endif %}
     </li>
     <a class="btn btn-outline-info" href="{% url 'update_task' task.id %}" role="button">Update</a>
