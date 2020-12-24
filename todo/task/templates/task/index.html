@@ -16,7 +16,7 @@
       {% endif %}
     </li>
     <a class="btn btn-outline-info" href="{% url 'update_task' task.id %}" role="button">Update</a>
-    <a href="{% url 'delete_task' task.id %}">Delete</a>
+    <a class="btn btn-outline-danger" href="{% url 'delete_task' task.id %}" role="button">Delete</a>
 
     {% empty %}
     <p>No Tasks</p>
