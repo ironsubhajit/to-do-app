@@ -1,6 +1,6 @@
-# to-do-app
+# To-Do-WebApp
 ---
-This is a simple To-Do web-app using Django & Python
+## This is a simple To-Do web-app using Django & Python
 ---
 this is ongoing project
 
