@@ -2,6 +2,9 @@
 ---
 ## This is a simple To-Do web-app using Django & Python
 ---
-this is ongoing project
+**Create Your Own To-Do List**
+* Add Task
+* Update Task When Complete
+* And Delete When no need to reference
 
 ![To-Do App](todo/task/static/task/images/to-do.jpg?raw=true "To-Do Web Page")
