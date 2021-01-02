@@ -51,6 +51,12 @@
     </div>
   </div>
 </div>
+<br>
+<div class="container text-center">
+  <span id="current-page">
+    <p class="badge rounded-pill bg-light text-dark">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+  </span>
+</div>
 <div class="container">
   {% if page_obj.paginator.num_pages > 1 %}
     <nav aria-label="Page navigation">
