@@ -13,10 +13,11 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-</head>
-<body>
-    {% block content %}
-    {% endblock %}
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'task/css/master.css' %}" />
+  </head>
+  <body>
+    {% block content %} {% endblock %}
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
