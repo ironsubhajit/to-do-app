@@ -1,42 +1,82 @@
 {% extends 'task/base.html' %} {% load crispy_forms_tags %} {% block content %}
 <div class="container">
-  <h1>welcome to todo app homepage</h1>
-  <form method="POST" class="form-inline">
-    {% csrf_token %}
-    {{ form.title }}
-    <button type="submit" class="btn btn-outline-success">Add Task</button>
-  </form>
-  <ul>
-    {% for task in tasks %}
-    <li>
-      {% if task.complete == True %}
-        <h5 class="display-4"><del>{{ task }}</del></h5>
-      {% else %}
-        <span><h5 class="display-4">{{ task }}</h5></span>
-      {% endif %}
-    </li>
-    <a class="btn btn-outline-info" href="{% url 'update_task' task.id %}" role="button">Update</a>
-    <a class="btn btn-outline-danger" href="{% url 'delete_task' task.id %}" role="button">Delete</a>
-
-    {% empty %}
-    <p>No Tasks</p>
-    {% endfor %}
-  </ul>
-  <div class="pagination">
-    <span class="page-links">
-      {% if page_obj.has_previous %}
-      <a href="?page=1">&laquo; first</a>
-      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
-      <span class="current">
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-      </span>
-
-      {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">next</a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-    </span>
+  <br />
+  <div class="jumbotron text-center">
+    <h1>To-Do List</h1>
   </div>
+  <div class="card">
+    <div class="card card-header text-center">
+      <form method="POST" class="form-inline">
+        {% csrf_token %}
+        <div class="row mb-2 mt-2">
+          <div class="col-auto">{{ form.title|as_crispy_field }}</div>
+          <div class="col-auto">
+            <button
+              type="submit"
+              class="btn btn-outline-success add_task_button"
+            >
+              Add Task
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+    <div class="card-body">
+      <ul>
+        {% for task in tasks %}
+        <li>
+          {% if task.complete == True %}
+          <h5 class="display-4"><del>{{ task }}</del></h5>
+          {% else %}
+          <span><h5 class="display-4">{{ task }}</h5></span>
+          {% endif %}
+        </li>
+        <a
+          class="btn btn-outline-info"
+          href="{% url 'update_task' task.id %}"
+          role="button"
+          >Update</a
+        >
+        <a
+          class="btn btn-outline-danger"
+          href="{% url 'delete_task' task.id %}"
+          role="button"
+          >Delete</a
+        >
+
+        {% empty %}
+        <p>No Tasks</p>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  {% if page_obj.paginator.num_pages > 1 %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-end">
+      <li class="page-item">
+        {% if page_obj.has_previous %}
+        <a
+          class="page-link"
+          href="?page={{ page_obj.previous_page_number }}"
+          tabindex="-1"
+        >
+          Previous
+        </a>
+        {% endif %}
+      </li>
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+          >Next
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
 </div>
 {% endblock %}
