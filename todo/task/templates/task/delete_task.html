@@ -2,7 +2,7 @@
 {% block content %}
     <br>
     <div class="container">
-        <h3>Are you sure you want to delete '{{ task }}'?</h3>
+        <h3 class="display-4">Are You Sure You Want to Delete '{{ task }}'?</h3>
         <br>
         <form method="POST">
             {% csrf_token %}
@@ -11,7 +11,7 @@
                     <a class="btn btn-outline-primary" href="{% url 'taskList' %}" role="button">Cancel</a>
                 </div>
                 <div class="col-auto">
-                    <input type="submit" class="btn btn-danger" value="Delete" role="button">
+                    <input type="submit" class="btn btn-outline-danger" value="Delete" role="button">
                 </div>
             </div>
         </form>
