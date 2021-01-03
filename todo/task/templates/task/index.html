@@ -75,9 +75,25 @@
         </li>
         <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
         <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+        <!-- pagination main logic -->
         {% if page_obj.paginator.num_pages < 4 %}
           <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
         {% endif %}
+        {% if page_obj.paginator.num_pages < 5 %}
+          <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+          <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+          {% if page_obj.number == 4 %}
+            <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+          {% endif %}
+          <li class="page-item"><a class="page-link" href="#">...</a></li>
+          {% if page_obj.number > 4 %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+          {% endif %}
+        {% endif %}
+        <!-- pagination main logic ends here -->
+
         <!-- if next page then show -->
         {% if page_obj.has_next %}
           <li class="page-item">
