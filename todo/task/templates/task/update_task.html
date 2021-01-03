@@ -1,11 +1,28 @@
 {% extends 'task/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h3>Update task</h3>
-    <form method='POST'>
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Task Update">
-    </form>
     <br>
-    <a href="{% url 'taskList' %}"><input type="submit" value="Cancel Update"></a>
+    <div class="container">
+        <h3 class="display-4 text-center">Update Task Details</h3>
+        <hr>
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form.title|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-md-3">
+                    {{ form.complete|as_crispy_field }}
+                </div>
+                <div class="col-md-9">
+                    <a href="{% url 'taskList' %}" class="btn btn-outline-primary" role="button" style="margin-right: 10px;">
+                        Cancel Update
+                    </a>
+                    <input type="submit" class="btn btn-outline-warning text-dark update_task" value="Task Update">
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}
