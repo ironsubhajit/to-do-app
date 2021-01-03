@@ -75,7 +75,9 @@
         </li>
         <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
         <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-
+        {% if page_obj.paginator.num_pages < 4 %}
+          <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+        {% endif %}
         <!-- if next page then show -->
         {% if page_obj.has_next %}
           <li class="page-item">
