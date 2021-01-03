@@ -30,7 +30,10 @@ def update_task(request, pk):
     task = Task.objects.get(id=pk)
     form = TaskForm(instance=task)
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'task': task
+    }
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
