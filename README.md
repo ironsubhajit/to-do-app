@@ -2,6 +2,8 @@
 ---
 ## This is a simple To-Do web-app using Django & Python
 ---
+Our App : [To-Do][t-do]
+
 **Create Your Own To-Do List**
 - [x] Add Task
 - [x] Update Task When Complete
@@ -13,7 +15,9 @@
 ---
 _This is currently on progress mode_<br>
 _Note:_
-- [x] Hosted on Heroku ([to-do][t-do])
+- [x] Hosted on [Heroku][heroku-official-site] ([To-Do][t-do])
 
 
 [t-do]: https://t-do.herokuapp.com/ "To-Do App"
+
+[heroku-official-site]: https://dashboard.heroku.com/ "Heroku Official Site"
